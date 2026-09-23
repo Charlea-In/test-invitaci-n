@@ -37,7 +37,7 @@ footer{margin-top:18px;font-size:11px;letter-spacing:.16em;text-transform:upperc
 <div class="wrap">
   <header data-od-id="admin-head">
     <div><span class="script">guest list</span><h1>NICOLE &amp; RODRIGO</h1><div class="sub">Admin · enlaces personalizados · CSV</div></div>
-    <div class="row" style="flex:none"><a class="btn ghost" style="text-decoration:none;display:inline-flex;align-items:center" href="invitacion-nicole-rodrigo.html">← Invitación</a></div>
+    <div class="row" style="flex:none"><a class="btn ghost" style="text-decoration:none;display:inline-flex;align-items:center" href="index.html">← Invitación</a></div>
   </header>
 
   <div class="card" data-od-id="admin-add">
@@ -65,13 +65,13 @@ footer{margin-top:18px;font-size:11px;letter-spacing:.16em;text-transform:upperc
     <p class="note" id="emptyNote">Sin invitados todavía. Añade el primero arriba.</p>
   </div>
 
-  <footer><a href="invitacion-nicole-rodrigo.html">← Volver a la invitación</a> · Charléa system · localStorage, sin backend de pago</footer>
+  <footer><a href="index.html">← Volver a la invitación</a> · Charléa system · localStorage, sin backend de pago</footer>
 </div>
 <script>
 (function(){
   var KEY="oe_guests_v1";
   var base=document.getElementById("baseUrl");
-  try{ base.value=location.href.replace(/admin\.html.*$/,"")+"invitacion-nicole-rodrigo.html"; }catch(e){ base.value="invitacion-nicole-rodrigo.html"; }
+  try{ base.value=location.href.replace(/admin\.html.*$/,"")+"index.html"; }catch(e){ base.value="index.html"; }
   function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||"[]"); }catch(e){ return []; } }
   function save(a){ localStorage.setItem(KEY,JSON.stringify(a)); }
   function linkFor(g){ return base.value+"?n="+encodeURIComponent(g.name)+"&l="+g.seats; }
