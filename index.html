@@ -130,6 +130,31 @@ a{color:inherit}
 .itin span.ev{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-hex)}
 .itin span.vn{display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--sage-deep-hex);margin-top:3px}
 .itin-branch{width:180px;margin:8px 0 0 -10px}
+/* ---------- countdown band ---------- */
+.countband{background:var(--pearl-hex);border-bottom:1px solid var(--border-hex);text-align:center;padding:36px 20px}
+.cd-kicker{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted-hex)}
+.cd-grid{display:flex;justify-content:center;gap:clamp(16px,5vw,38px);margin-top:16px}
+.cd-cell{min-width:62px}
+.cd-num{font-family:var(--display);font-weight:500;font-size:clamp(34px,7vw,52px);line-height:1;color:var(--sage-deep-hex);font-variant-numeric:tabular-nums}
+.cd-lab{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-hex);margin-top:8px}
+/* ---------- gallery ---------- */
+.gal{padding:56px 0 60px;justify-content:center}
+.gal .sec-title{padding:0 24px}
+.gal-view{position:relative;width:100%;max-width:900px;margin:20px auto 0;aspect-ratio:4/3;overflow:hidden;background:#EFE6D2}
+@media(min-width:700px){.gal-view{aspect-ratio:16/9}}
+.gal-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;margin:0}
+.gal-slide.on{opacity:1;z-index:1}
+.gal-slide img{width:100%;height:100%;object-fit:cover}
+.gal-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px;padding:0 24px}
+.gal-arrow{width:44px;height:44px;flex:none;border-radius:50%;border:1.5px solid var(--sage-deep-hex);background:transparent;color:var(--sage-deep-hex);font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.gal-arrow:hover{background:#F1E3C2}
+.gal-dots{display:flex;gap:10px;align-items:center}
+.gal-dot{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--sage-deep-hex);background:transparent;padding:0;cursor:pointer}
+.gal-dot.on{background:var(--sage-deep-hex)}
+/* ---------- music button ---------- */
+.music-btn{position:fixed;right:16px;bottom:16px;z-index:60;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--sage-deep-hex);background:#FFFDF8;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(140,110,47,.25)}
+.music-btn:hover{background:#F1E3C2}
+.music-btn img{width:22px;height:22px}
 /* ---------- RSVP ---------- */
 .rsvp-lead{text-align:center;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-hex);line-height:2}
 .rsvp-hello{
@@ -200,6 +225,17 @@ a{color:inherit}
     </div>
   </article>
 
+  <!-- COUNTDOWN -->
+  <section class="countband reveal" data-od-id="countdown" aria-label="Countdown to the wedding">
+    <div class="cd-kicker" id="cdKicker">Until we say I do</div>
+    <div class="cd-grid">
+      <div class="cd-cell"><div class="cd-num" id="cdD">00</div><div class="cd-lab">Days</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cdH">00</div><div class="cd-lab">Hours</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cdM">00</div><div class="cd-lab">Minutes</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cdS">00</div><div class="cd-lab">Seconds</div></div>
+    </div>
+  </section>
+
   <!-- 2 OUR STORY -->
   <article class="card pad reveal" id="our-story" data-od-id="story-card" aria-label="Our story">
     <div class="sec-title" data-od-id="story-title">
@@ -264,7 +300,21 @@ a{color:inherit}
     <img class="itin-branch" src="assets/eucalyptus-timeline.svg" alt="" aria-hidden="true" data-od-id="timeline-branch">
   </article>
 
-  <!-- 5 RSVP -->
+  <!-- 5 GALLERY -->
+  <article class="card gal reveal" id="gallery" data-od-id="gallery-card" aria-label="Photo gallery">
+    <div class="sec-title" data-od-id="gallery-title">
+      <span class="script">sweet</span><span class="serif">Moments</span>
+      <img src="assets/heart.svg" alt="" aria-hidden="true">
+    </div>
+    <div class="gal-view" id="galView" role="region" aria-roledescription="carousel" aria-label="Wedding photos"></div>
+    <div class="gal-nav" data-od-id="gallery-nav">
+      <button class="gal-arrow" id="galPrev" aria-label="Previous photo" data-od-id="gallery-prev">&#8249;</button>
+      <div class="gal-dots" id="galDots"></div>
+      <button class="gal-arrow" id="galNext" aria-label="Next photo" data-od-id="gallery-next">&#8250;</button>
+    </div>
+  </article>
+
+  <!-- 6 RSVP -->
   <article class="card pad reveal" id="rsvp" data-od-id="rsvp-card" aria-label="RSVP">
     <div class="sec-title" data-od-id="rsvp-title">
       <span class="script">kindly</span><span class="serif">RSVP</span>
@@ -285,7 +335,7 @@ a{color:inherit}
     </form>
   </article>
 
-  <!-- 6 CLOSING -->
+  <!-- 7 CLOSING -->
   <article class="card closing reveal" id="closing" data-od-id="closing-card" aria-label="Closing">
     <div class="closing-bg"><img src="photos/sunset.jpg" alt="Nicole and Rodrigo holding hands by an infinity pool at sunset" width="2260" height="2336"></div>
     <div class="closing-text" data-od-id="closing-body">
@@ -299,6 +349,10 @@ a{color:inherit}
   </article>
 
 </main>
+
+<!-- Sube song.mp3 a la raíz del repo para activar la música -->
+<audio id="bgMusic" src="song.mp3" loop preload="auto"></audio>
+<button class="music-btn" id="musicBtn" aria-label="Play music" aria-pressed="false" data-od-id="music-toggle"><img id="musicIcon" src="assets/icon-play.svg" alt="" aria-hidden="true"></button>
 
 <script>
 /* ===== Charléa invitation logic: URL params + reveal + RSVP (GAS) ===== */
@@ -395,7 +449,102 @@ a{color:inherit}
       .catch(function(){ note.textContent = "Saved on this device — we will confirm shortly."; btn.disabled = false; btn.textContent = "Send RSVP"; });
   });
 
-  /* --- 6. Remember scroll (deck position) --- */
+  /* --- 6. Countdown to Nov 21, 2026, 4:30 PM (El Salvador) --- */
+  (function(){
+    var target = new Date("2026-11-21T16:30:00-06:00").getTime();
+    var d = document.getElementById("cdD"), h = document.getElementById("cdH"),
+        m = document.getElementById("cdM"), s = document.getElementById("cdS"),
+        k = document.getElementById("cdKicker");
+    if (!d) return;
+    function pad(n){ return (n < 10 ? "0" : "") + n; }
+    function tick(){
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        d.textContent = h.textContent = m.textContent = s.textContent = "00";
+        if (k) k.textContent = "The day is here";
+        return;
+      }
+      d.textContent = pad(Math.floor(diff / 864e5));
+      h.textContent = pad(Math.floor(diff / 36e5) % 24);
+      m.textContent = pad(Math.floor(diff / 6e4) % 60);
+      s.textContent = pad(Math.floor(diff / 1e3) % 60);
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+
+  /* --- 7. Gallery: crossfade every 5s (reemplaza las fotos en GALLERY) --- */
+  (function(){
+    var GALLERY = [
+      { src: "photos/hero.jpg", alt: "Nicole and Rodrigo on illuminated garden stairs at night" },
+      { src: "photos/story-2018.jpg", alt: "Nicole and Rodrigo meeting, foreheads together" },
+      { src: "photos/story-2020.jpg", alt: "Couple holding hands walking through tall grass" },
+      { src: "photos/story-2023.jpg", alt: "Proposal moment, couple seated together outdoors" },
+      { src: "photos/story-2026.jpg", alt: "Smiling engaged couple" },
+      { src: "photos/sunset.jpg", alt: "Nicole and Rodrigo holding hands by an infinity pool at sunset" }
+    ];
+    var view = document.getElementById("galView"), dotsBox = document.getElementById("galDots");
+    if (!view) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var cur = 0, timer = null, slides = [], dots = [];
+    GALLERY.forEach(function(g, i){
+      var fig = document.createElement("figure");
+      fig.className = "gal-slide" + (i === 0 ? " on" : "");
+      fig.setAttribute("aria-hidden", i === 0 ? "false" : "true");
+      var img = document.createElement("img");
+      img.src = g.src; img.alt = g.alt; img.loading = "lazy";
+      img.onerror = function(){ fig.remove(); };
+      fig.appendChild(img); view.appendChild(fig); slides.push(fig);
+      var dot = document.createElement("button");
+      dot.className = "gal-dot" + (i === 0 ? " on" : "");
+      dot.setAttribute("aria-label", "Go to photo " + (i + 1));
+      dot.addEventListener("click", function(){ show(i); restart(); });
+      dotsBox.appendChild(dot); dots.push(dot);
+    });
+    function show(i){
+      if (!slides.length) return;
+      cur = (i + slides.length) % slides.length;
+      slides.forEach(function(f, j){
+        f.classList.toggle("on", j === cur);
+        f.setAttribute("aria-hidden", j === cur ? "false" : "true");
+      });
+      dots.forEach(function(dt, j){ dt.classList.toggle("on", j === cur); });
+    }
+    function restart(){ if (timer) clearInterval(timer); if (!reduce) timer = setInterval(function(){ show(cur + 1); }, 5000); }
+    document.getElementById("galPrev").addEventListener("click", function(){ show(cur - 1); restart(); });
+    document.getElementById("galNext").addEventListener("click", function(){ show(cur + 1); restart(); });
+    view.addEventListener("mouseenter", function(){ if (timer) clearInterval(timer); });
+    view.addEventListener("mouseleave", restart);
+    restart();
+  })();
+
+  /* --- 8. Music: autoplay al abrir + botón dorado (sube song.mp3 al repo) --- */
+  (function(){
+    var audio = document.getElementById("bgMusic"),
+        btn = document.getElementById("musicBtn"),
+        icon = document.getElementById("musicIcon");
+    if (!audio || !btn) return;
+    function paint(){
+      var playing = !audio.paused;
+      icon.src = playing ? "assets/icon-pause.svg" : "assets/icon-play.svg";
+      btn.setAttribute("aria-pressed", playing ? "true" : "false");
+      btn.setAttribute("aria-label", playing ? "Pause music" : "Play music");
+    }
+    audio.addEventListener("play", paint);
+    audio.addEventListener("pause", paint);
+    audio.addEventListener("error", function(){ btn.style.display = "none"; });
+    try { var p = audio.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
+    function unlock(){ audio.play().catch(function(){}); }
+    window.addEventListener("pointerdown", unlock, { once: true });
+    window.addEventListener("keydown", unlock, { once: true });
+    btn.addEventListener("click", function(ev){
+      ev.stopPropagation();
+      if (audio.paused) audio.play().catch(function(){});
+      else audio.pause();
+    });
+    paint();
+  })();
+
+  /* --- 9. Remember scroll (deck position) --- */
   try {
     var y = parseInt(sessionStorage.getItem("oe-scroll") || "0", 10);
     if (y > 0) setTimeout(function(){ window.scrollTo(0, y); }, 60);
