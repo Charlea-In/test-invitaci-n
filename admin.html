@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guest Admin — Nicole &amp; Rodrigo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FBF8F1;--pearl:#F4EEE3;--ink:#211D17;--muted:#7C7466;--border:#E4DAC6;--sage:#5C6650;--r:18px}
+*{box-sizing:border-box}body{margin:0;font-family:Montserrat,system-ui,sans-serif;background:var(--pearl);color:var(--ink)}
+:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
+.wrap{max-width:1020px;margin:0 auto;padding:28px 18px 60px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between}
+h1{font-family:"Cormorant Garamond",serif;font-weight:500;letter-spacing:.08em;margin:0;font-size:clamp(28px,4vw,40px)}
+.script{font-family:"Pinyon Script",cursive;font-size:30px;display:block}
+.sub{color:var(--muted);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.card{background:var(--paper);border:1px solid var(--border);border-radius:var(--r);box-shadow:0 14px 40px rgba(60,52,38,.12);padding:20px;margin-top:18px}
+.grid{display:grid;gap:14px;grid-template-columns:1fr} @media(min-width:860px){.grid{grid-template-columns:1fr 1fr}}
+label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin:0 0 6px}
+input,select{width:100%;min-height:48px;border:1px solid var(--border);border-radius:12px;padding:12px 14px;font:inherit;background:#fff;color:var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:140px}
+.btn{min-height:48px;border-radius:999px;border:0;cursor:pointer;font:600 12px Montserrat;letter-spacing:.18em;text-transform:uppercase;padding:12px 20px}
+.primary{background:var(--sage);color:#FFF9EE}.primary:hover{background:#48523F}
+.ghost{background:transparent;border:1.5px solid var(--sage);color:var(--sage)} .ghost:hover{background:#EFF0E6}
+table{width:100%;border-collapse:collapse;font-size:13px}th{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 8px;border-bottom:1px solid var(--border)}
+td{padding:10px 8px;border-bottom:1px solid #EFE7D5;vertical-align:middle}tr:hover td{background:#FFFDF7}
+.link{font-size:11px;word-break:break-all;color:var(--sage)}
+.copy{min-height:44px;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;padding:8px 12px;font:600 11px Montserrat;letter-spacing:.1em}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}.stat{flex:1;min-width:120px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px;text-align:center}
+.stat b{font-family:"Cormorant Garamond",serif;font-size:28px;display:block}.stat span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.note{font-size:12px;color:var(--muted);line-height:1.7}.tablewrap{overflow-x:auto}
+footer{margin-top:18px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}footer a{color:var(--sage)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header data-od-id="admin-head">
+    <div><span class="script">guest list</span><h1>NICOLE &amp; RODRIGO</h1><div class="sub">Admin · enlaces personalizados · CSV</div></div>
+    <div class="row" style="flex:none"><a class="btn ghost" style="text-decoration:none;display:inline-flex;align-items:center" href="invitacion-nicole-rodrigo.html">← Invitación</a></div>
+  </header>
+
+  <div class="card" data-od-id="admin-add">
+    <div class="row">
+      <div><label for="fName">Nombre del invitado / familia</label><input id="fName" placeholder="Ej. Familia Rivera"></div>
+      <div style="max-width:140px"><label for="fSeats">Lugares</label><input id="fSeats" type="number" min="1" max="10" value="2"></div>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn primary" id="addBtn" data-od-id="admin-add-btn">Añadir invitado</button>
+      <button class="btn ghost" id="seedBtn">Cargar ejemplo</button>
+    </div>
+    <p class="note">El enlace usa el sistema estándar <code>?n=Nombre&amp;l=2</code>. Al abrirlo, la tarjeta RSVP saluda por nombre y preselecciona los lugares.</p>
+    <label for="baseUrl" style="margin-top:8px">URL base de la invitación</label>
+    <input id="baseUrl" readonly>
+  </div>
+
+  <div class="card" data-od-id="admin-stats">
+    <div class="stats"><div class="stat"><b id="sTotal">0</b><span>Invitados</span></div><div class="stat"><b id="sSeats">0</b><span>Lugares</span></div><div class="stat"><b id="sResp">0</b><span>Respuestas*</span></div></div>
+    <p class="note">*Respuestas guardadas en este navegador (clave <code>rsvp_responses</code>) o llegadas vía Google Apps Script → Sheets.</p>
+    <div class="row"><button class="btn primary" id="csvBtn" data-od-id="admin-csv">Exportar CSV</button><button class="btn ghost" id="clearBtn">Borrar todo</button></div>
+  </div>
+
+  <div class="card" data-od-id="admin-table">
+    <div class="tablewrap"><table aria-label="Guest list"><thead><tr><th>Invitado</th><th>Lug.</th><th>Enlace personal</th><th></th></tr></thead><tbody id="tbody"></tbody></table></div>
+    <p class="note" id="emptyNote">Sin invitados todavía. Añade el primero arriba.</p>
+  </div>
+
+  <footer><a href="invitacion-nicole-rodrigo.html">← Volver a la invitación</a> · Charléa system · localStorage, sin backend de pago</footer>
+</div>
+<script>
+(function(){
+  var KEY="oe_guests_v1";
+  var base=document.getElementById("baseUrl");
+  try{ base.value=location.href.replace(/admin\.html.*$/,"")+"invitacion-nicole-rodrigo.html"; }catch(e){ base.value="invitacion-nicole-rodrigo.html"; }
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||"[]"); }catch(e){ return []; } }
+  function save(a){ localStorage.setItem(KEY,JSON.stringify(a)); }
+  function linkFor(g){ return base.value+"?n="+encodeURIComponent(g.name)+"&l="+g.seats; }
+  function render(){
+    var guests=load(); var tb=document.getElementById("tbody"); tb.innerHTML="";
+    var seats=0; guests.forEach(function(g){ seats+=+g.seats||0;
+      var tr=document.createElement("tr");
+      var link=linkFor(g);
+      tr.innerHTML='<td><b></b></td><td></td><td><span class="link"></span></td><td></td>';
+      tr.children[0].textContent=g.name; tr.children[1].textContent=g.seats;
+      tr.children[2].textContent=link;
+      var b=document.createElement("button"); b.className="copy"; b.textContent="Copiar"; b.setAttribute("aria-label","Copiar enlace de "+g.name);
+      b.onclick=function(){ navigator.clipboard&&navigator.clipboard.writeText(link); b.textContent="¡Copiado!"; setTimeout(function(){b.textContent="Copiar";},1400); };
+      var d=document.createElement("button"); d.className="copy"; d.textContent="✕"; d.setAttribute("aria-label","Eliminar "+g.name); d.style.marginLeft="6px";
+      d.onclick=function(){ save(load().filter(function(x){return x.id!==g.id;})); render(); };
+      tr.children[3].appendChild(b); tr.children[3].appendChild(d); tb.appendChild(tr);
+    });
+    document.getElementById("sTotal").textContent=guests.length;
+    document.getElementById("sSeats").textContent=seats;
+    var resp=0; try{ resp=(JSON.parse(localStorage.getItem("rsvp_responses")||"[]")).length; }catch(e){}
+    document.getElementById("sResp").textContent=resp;
+    document.getElementById("emptyNote").style.display=guests.length?"none":"block";
+  }
+  document.getElementById("addBtn").onclick=function(){
+    var n=document.getElementById("fName").value.trim(); var s=Math.max(1,Math.min(10,parseInt(document.getElementById("fSeats").value,10)||2));
+    if(!n){ document.getElementById("fName").focus(); return; }
+    var g=load(); g.push({id:Date.now(),name:n,seats:s}); save(g);
+    document.getElementById("fName").value=""; render();
+  };
+  document.getElementById("seedBtn").onclick=function(){ save([{id:1,name:"Familia Rivera",seats:4},{id:2,name:"Ana Sofía",seats:2},{id:3,name:"James Carter",seats:1}]); render(); };
+  document.getElementById("clearBtn").onclick=function(){ if(confirm("¿Borrar la lista de invitados?")){ save([]); render(); } };
+  document.getElementById("csvBtn").onclick=function(){
+    var g=load(); var rows=[["name","seats","link"]];
+    g.forEach(function(x){ rows.push([x.name,x.seats,linkFor(x)]); });
+    var csv=rows.map(function(r){ return r.map(function(c){ return '"'+String(c).replace(/"/g,'""')+'"'; }).join(","); }).join("\n");
+    var a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"})); a.download="invitados-nicole-rodrigo.csv"; a.click();
+  };
+  render();
+})();
+</script>
+</body>
+</html>

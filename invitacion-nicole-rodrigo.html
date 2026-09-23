@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicole &amp; Rodrigo — Wedding Invitation · Nov 21, 2026</title>
+<meta name="description" content="Together with their families, Nicole and Rodrigo invite you to celebrate their wedding — Ministerio Cristiano Internacional Río de Gloria, San Salvador, November 21 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: oklch(0.93 0.045 85);
+  --surface: oklch(0.995 0.005 95);
+  --fg: oklch(0.27 0.03 75);
+  --ink: oklch(0.27 0.03 75);
+  --pearl: oklch(0.93 0.045 85);
+  --muted: oklch(0.58 0.045 80);
+  --border: oklch(0.85 0.06 85);
+  --accent: oklch(0.68 0.11 80);
+  --sage: oklch(0.68 0.11 80);
+  --sage-deep: oklch(0.55 0.10 80);
+  --gold: oklch(0.68 0.11 80);
+  --pearl-hex:#F7EBD3; --surface-hex:#FFFDF8; --ink-hex:#2B241A; --muted-hex:#8A7A5C;
+  --border-hex:#E7D3AC; --sage-hex:#C9A45C; --sage-deep-hex:#8C6E2F;
+  --display:"Cormorant Garamond","Playfair Display",Georgia,serif;
+  --script:"Pinyon Script","Great Vibes",cursive;
+  --body:"Montserrat","DM Sans",system-ui,-apple-system,sans-serif;
+  --r:0px;
+  --shadow:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--body);color:var(--ink-hex,var(--fg));
+  background:var(--pearl-hex);
+  background-image:radial-gradient(1200px 500px at 50% -10%,#fff 0%,transparent 60%);
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sage-deep-hex);outline-offset:3px;border-radius:6px}
+/* ---------- full-screen sections (sin barra, tarjetas a pantalla completa) ---------- */
+.deck{
+  display:grid;grid-template-columns:1fr;gap:0;
+  max-width:none;margin:0;padding:0;
+}
+.card{
+  background:var(--surface-hex);border-radius:0;overflow:hidden;position:relative;
+  box-shadow:none;border:0;border-bottom:1px solid var(--border-hex);
+  display:flex;flex-direction:column;min-height:100svh;
+}
+.card.pad{padding:56px 24px 60px}
+.card.pad>.sec-title,.card.pad>.timeline,.card.pad>.detail-list,
+.card.pad>.itin,.card.pad>.rsvp-lead,.card.pad>.rsvp-hello,
+.card.pad>.rsvp-form,.card.pad>.qr{width:100%;max-width:600px;margin-left:auto;margin-right:auto}
+.venue-wrap img.photo{height:34vh;min-height:240px}
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+/* ---------- HERO ---------- */
+.hero{min-height:100svh;color:#FFF8EC;text-align:center;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(20,16,10,.42) 0%,rgba(20,16,10,.10) 30%,rgba(20,16,10,0) 45%,rgba(20,16,10,.18) 62%,rgba(20,16,10,.72) 100%);
+}
+.hero-inner{display:flex;flex-direction:column;height:100%;padding:64px 26px 30px;flex:1}
+.hero .kicker{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.95}
+.hero-names{font-family:var(--display);font-weight:500;letter-spacing:.14em;line-height:1;margin:16px 0 0}
+.hero-names .big{display:block;font-size:clamp(38px,5vw,52px)}
+.hero-names .and{font-family:var(--script);font-weight:400;font-size:clamp(30px,4vw,40px);letter-spacing:0;margin:2px 0;display:block;text-transform:none}
+.rule{width:120px;height:1px;background:rgba(255,248,236,.7);margin:18px auto}
+.hero-invite{font-size:11px;letter-spacing:.24em;line-height:2;text-transform:uppercase}
+.hero-date{display:flex;align-items:center;justify-content:center;gap:14px;margin:14px 0 6px;font-family:var(--display);letter-spacing:.22em;font-size:15px}
+.hero-date .day{font-size:34px;letter-spacing:.05em;border-left:1px solid rgba(255,248,236,.6);border-right:1px solid rgba(255,248,236,.6);padding:0 16px;line-height:1}
+.hero-time{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;opacity:.92}
+.hero-foot{margin-top:auto;padding-top:30px}
+.hero-foot .loc{font-size:11px;letter-spacing:.26em;line-height:2;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.scroll-cue{background:none;border:0;cursor:pointer;margin:10px auto 0;display:flex;flex-direction:column;align-items:center;gap:6px;color:#FFF8EC;min-width:44px;min-height:44px;justify-content:center}
+.scroll-cue img{width:22px;height:22px;filter:brightness(0) invert(1);animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+/* ---------- section titles ---------- */
+.sec-title{text-align:center;margin:6px 0 18px}
+.sec-title .script{font-family:var(--script);font-size:38px;line-height:1;color:var(--ink-hex);display:block}
+.sec-title .serif{font-family:var(--display);font-size:34px;letter-spacing:.22em;font-weight:500;text-transform:uppercase;display:block;margin-top:2px}
+.sec-title img{width:16px;height:16px;margin:10px auto 0;opacity:.85}
+.sec-title .ruleline{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px}
+.sec-title .ruleline::before,.sec-title .ruleline::after{content:"";width:56px;height:1px;background:var(--border-hex)}
+/* ---------- story ---------- */
+.timeline{position:relative;margin:8px 0 0;padding-left:2px}
+.tl-item{display:grid;grid-template-columns:112px 1fr;gap:0;position:relative;padding:0 0 30px 0}
+.tl-item>div:last-child{padding-left:30px;min-width:0}
+.tl-rail{position:absolute;left:127px;top:8px;bottom:26px;width:1px;background:var(--border-hex)}
+.tl-dot{position:absolute;left:124px;width:7px;height:7px;border-radius:50%;background:var(--sage-deep-hex);margin-top:6px}
+.polaroid{background:#fff;border:1px solid var(--border-hex);border-radius:6px;padding:6px 6px 10px;box-shadow:0 8px 20px rgba(140,110,47,.16);transform:rotate(-3deg)}
+.tl-item:nth-child(even) .polaroid{transform:rotate(2.5deg)}
+.polaroid img{width:100%;height:104px;object-fit:cover;border-radius:3px;aspect-ratio:1/1}
+.tl-year{font-weight:600;font-size:12px;letter-spacing:.18em}
+.tl-sub{font-size:11px;letter-spacing:.18em;line-height:1.7;text-transform:uppercase;margin:8px 0 6px;font-weight:600}
+.tl-desc{font-size:12.5px;line-height:1.75;color:#5A4E38;margin:0;max-width:32ch;text-wrap:pretty}
+.branch-foot{width:170px;margin:6px auto 0;opacity:.95}
+/* ---------- details ---------- */
+.venue-wrap{margin:-56px -24px 0;position:relative}
+.venue-wrap img.photo{width:100%;height:34vh;min-height:240px;object-fit:cover;object-position:center 40%}
+.torn{height:22px;width:100%;display:block;margin-top:-1px;
+  background:var(--surface-hex);
+  clip-path:polygon(0 60%,4% 30%,9% 55%,14% 25%,19% 50%,25% 20%,31% 55%,37% 28%,43% 52%,49% 22%,55% 55%,61% 26%,67% 52%,73% 24%,79% 55%,85% 30%,90% 52%,95% 28%,100% 55%,100% 100%,0 100%);
+}
+.detail-list{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:20px}
+.detail-list li{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start}
+.detail-list img.ic{width:40px;height:40px}
+.detail-list h3{margin:2px 0 6px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+.detail-list p{margin:0;font-size:12.5px;line-height:1.7;color:#5A4E38}
+.detail-list a{color:var(--sage-deep-hex);text-underline-offset:3px}
+.map-btns{display:flex;gap:10px;margin-top:14px;flex-wrap:nowrap}
+.map-btn{flex:1 1 0;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 8px;border:1.5px solid var(--sage-deep-hex);border-radius:999px;text-decoration:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--sage-deep-hex);background:transparent;white-space:nowrap}
+.map-btn:hover{background:#F1E3C2}
+.map-btn img{width:20px;height:20px;flex:none}
+.corner-floral{position:absolute;right:-8px;bottom:-6px;width:150px;pointer-events:none}
+/* ---------- itinerary ---------- */
+.itin{list-style:none;margin:10px 0 0;padding:0;position:relative}
+.itin::before{content:"";position:absolute;left:57px;top:10px;bottom:10px;width:1px;background:var(--border-hex)}
+.itin li{display:grid;grid-template-columns:44px 14px 1fr;gap:8px;align-items:center;padding:13px 0;position:relative}
+.itin img{width:34px;height:34px;justify-self:center}
+.itin .dot{width:7px;height:7px;border-radius:50%;background:var(--sage-deep-hex);justify-self:center;position:relative;z-index:1}
+.itin time{font-size:12px;letter-spacing:.14em;font-weight:600;display:block}
+.itin span.ev{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-hex)}
+.itin span.vn{display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--sage-deep-hex);margin-top:3px}
+.itin-branch{width:180px;margin:8px 0 0 -10px}
+/* ---------- RSVP ---------- */
+.rsvp-lead{text-align:center;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-hex);line-height:2}
+.rsvp-hello{
+  text-align:center;font-family:var(--display);font-style:italic;font-size:19px;margin:12px 0 4px;color:var(--ink-hex);
+}
+.rsvp-form{margin-top:10px;border-top:1px solid var(--border-hex);padding-top:16px}
+.pills{display:flex;gap:10px;margin-top:18px}
+.pill{flex:1 1 0;position:relative;cursor:pointer;margin:0}
+.pill input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.pill span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:12px 6px;border:1.5px solid var(--sage-deep-hex);border-radius:999px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--sage-deep-hex);background:transparent;transition:background .2s ease,color .2s ease}
+.pill input:checked+span{background:var(--sage-deep-hex);color:#FFF9EE}
+.pill input:focus-visible+span{outline:3px solid var(--sage-deep-hex);outline-offset:2px}
+.msg-label{display:block;margin:20px 0 8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-hex);text-align:center}
+.msg{width:100%;border:1px solid var(--border-hex);border-radius:14px;background:#fff;font:inherit;font-size:13px;line-height:1.6;color:var(--ink-hex);padding:12px 14px;min-height:88px;resize:vertical}
+.msg::placeholder{color:var(--muted-hex)}
+.thanks{text-align:center;font-family:var(--display);font-style:italic;font-size:20px;line-height:1.5;color:var(--sage-deep-hex);min-height:30px;margin:16px 0 0}
+.btn{
+  width:100%;margin-top:14px;border:0;cursor:pointer;min-height:52px;border-radius:999px;
+  background:var(--sage-deep-hex);color:#FFF9EE;font-family:var(--body);font-weight:600;
+  font-size:12px;letter-spacing:.24em;text-transform:uppercase;transition:background .2s ease,transform .15s ease;
+}
+.btn:hover{background:#6E5522}
+.btn:active{transform:scale(.99)}
+.btn:disabled{opacity:.6;cursor:wait}
+.form-note{font-size:11.5px;color:var(--muted-hex);text-align:center;min-height:20px;margin:10px 0 0;line-height:1.6}
+/* ---------- closing: single full photo with overlaid text ---------- */
+.closing{min-height:110svh;color:#FFF8EC;text-align:center;justify-content:center}
+.closing-bg{position:absolute;inset:0}
+.closing-bg img{width:100%;height:100%;object-fit:cover}
+.closing::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,17,8,.42) 0%,rgba(24,17,8,.12) 35%,rgba(24,17,8,.12) 60%,rgba(24,17,8,.58) 100%)}
+.closing-text{position:relative;z-index:1;margin:auto;padding:64px 26px;display:flex;flex-direction:column;align-items:center}
+.closing-text .script{font-family:var(--script);font-size:clamp(38px,6vw,54px);display:block;line-height:1.1;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.closing-text .serif{font-family:var(--display);font-size:clamp(20px,3vw,26px);letter-spacing:.26em;text-transform:uppercase;display:block;margin-top:10px;line-height:1.8;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.closing-text img.heart-w{width:18px;height:18px;margin:16px auto;filter:brightness(0) invert(1)}
+.closing-text .sign-script{font-family:var(--script);font-size:32px;display:block;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.closing-text .names{font-family:var(--display);letter-spacing:.24em;font-size:15px;text-transform:uppercase;margin-top:8px;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+@media(max-width:420px){
+  .tl-item{grid-template-columns:100px 1fr}
+  .tl-item>div:last-child{padding-left:26px}
+  .tl-rail{left:113px}.tl-dot{left:110px}
+  .itin::before{left:51px}
+}
+</style>
+</head>
+<body>
+<main class="deck" data-od-id="invitation-deck">
+
+  <!-- 1 HERO -->
+  <article class="card hero reveal" id="hero" data-od-id="hero-card" aria-label="Invitation hero">
+    <div class="hero-bg"><img src="photos/hero.jpg" alt="Nicole and Rodrigo embracing in a golden field at sunset" width="1000" height="1250"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="kicker" data-od-id="hero-kicker">Together with their families</div>
+        <h2 class="hero-names" data-od-id="hero-names">
+          <span class="big">NICOLE</span><span class="and">and</span><span class="big">RODRIGO</span>
+        </h2>
+        <div class="rule" aria-hidden="true"></div>
+        <p class="hero-invite" data-od-id="hero-invite">Invite you to<br>celebrate their wedding</p>
+        <div class="hero-date" data-od-id="hero-date"><span>NOV</span><span class="day">21</span><span>2026</span></div>
+        <div class="hero-time" data-od-id="hero-time">At 5 o'clock in the evening</div>
+      </div>
+      <div class="hero-foot" data-od-id="hero-location">
+        <div class="loc">Ministerio Cristiano Internacional<br>Río de Gloria, San Salvador</div>
+        <button class="scroll-cue" data-scroll="#our-story" aria-label="Scroll to our story">
+          <img src="assets/heart.svg" alt="" aria-hidden="true">
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 2 OUR STORY -->
+  <article class="card pad reveal" id="our-story" data-od-id="story-card" aria-label="Our story">
+    <div class="sec-title" data-od-id="story-title">
+      <span class="script">our story</span>
+      <span class="ruleline"><img src="assets/heart.svg" alt="" aria-hidden="true"></span>
+    </div>
+    <div class="timeline" data-od-id="story-timeline">
+      <div class="tl-rail" aria-hidden="true"></div>
+      <div class="tl-item">
+        <div class="polaroid"><img src="photos/story-2018.jpg" alt="Nicole and Rodrigo meeting, foreheads together" width="400" height="400"></div>
+        <div><span class="tl-dot" aria-hidden="true"></span><div class="tl-year">2018</div><div class="tl-sub">We met</div><p class="tl-desc">A chance meeting that changed everything.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="polaroid"><img src="photos/story-2020.jpg" alt="Couple holding hands walking through tall grass" width="400" height="400"></div>
+        <div><span class="tl-dot" aria-hidden="true"></span><div class="tl-year">2020</div><div class="tl-sub">We fell in love</div><p class="tl-desc">Adventures, laughter and countless memories.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="polaroid"><img src="photos/story-2023.jpg" alt="Proposal moment, couple seated together outdoors" width="400" height="400"></div>
+        <div><span class="tl-dot" aria-hidden="true"></span><div class="tl-year">2023</div><div class="tl-sub">The proposal</div><p class="tl-desc">The start of our forever together.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="polaroid"><img src="photos/story-2026.jpg" alt="Smiling engaged couple" width="400" height="400"></div>
+        <div><span class="tl-dot" aria-hidden="true"></span><div class="tl-year">2026</div><div class="tl-sub">We say I do</div><p class="tl-desc">We can't wait to celebrate with you!</p></div>
+      </div>
+    </div>
+    <img class="branch-foot" src="assets/olive-branch.svg" alt="" aria-hidden="true" data-od-id="story-branch">
+  </article>
+
+  <!-- 3 DETAILS -->
+  <article class="card pad reveal" id="the-details" data-od-id="details-card" aria-label="Wedding details">
+    <div class="venue-wrap" data-od-id="details-venue">
+      <img class="photo" src="photos/venue.jpg" alt="Ministerio Cristiano Internacional Río de Gloria church in San Salvador" width="1000" height="500">
+      <span class="torn" aria-hidden="true"></span>
+    </div>
+    <div class="sec-title" data-od-id="details-title">
+      <span class="script">the</span><span class="serif">Details</span>
+      <img src="assets/heart.svg" alt="" aria-hidden="true">
+    </div>
+    <ul class="detail-list" data-od-id="details-list">
+      <li><img class="ic" src="assets/icon-church.svg" alt="" aria-hidden="true"><div><h3>Ceremony &amp; Reception</h3><p>Ministerio Cristiano Internacional<br>Río de Gloria, San Salvador</p><div class="map-btns" data-od-id="details-map-btns"><a class="map-btn" href="https://maps.app.goo.gl/39MjHheeKSmofu6p9" target="_blank" rel="noopener" data-od-id="btn-maps"><img src="assets/icon-maps.svg" alt="" aria-hidden="true">Maps</a><a class="map-btn" href="https://waze.com/ul?q=Ministerio%20Cristiano%20Internacional%20R%C3%ADo%20de%20Gloria%2C%20San%20Salvador&amp;navigate=yes" target="_blank" rel="noopener" data-od-id="btn-waze"><img src="assets/icon-waze.svg" alt="" aria-hidden="true">Waze</a></div></div></li>
+      <li><img class="ic" src="assets/icon-dress.svg" alt="" aria-hidden="true"><div><h3>Attire</h3><p>Formal Attire</p></div></li>
+    </ul>
+    <img class="corner-floral" src="assets/florals-white-corner.svg" alt="" aria-hidden="true" data-od-id="details-florals">
+  </article>
+
+  <!-- 4 TIMELINE -->
+  <article class="card pad reveal" id="the-timeline" data-od-id="timeline-card" aria-label="Day-of timeline">
+    <div class="sec-title" data-od-id="timeline-title">
+      <span class="script">the</span><span class="serif">Timeline</span>
+      <img src="assets/heart.svg" alt="" aria-hidden="true">
+    </div>
+    <ol class="itin" data-od-id="timeline-list">
+      <li><img src="assets/icon-guests.svg" alt="" aria-hidden="true"><span class="dot" aria-hidden="true"></span><div><time>4:30 PM</time><span class="ev">Recepción de invitados</span><span class="vn">Templo</span></div></li>
+      <li><img src="assets/icon-rings.svg" alt="" aria-hidden="true"><span class="dot" aria-hidden="true"></span><div><time>5:00 PM</time><span class="ev">Ceremonia civil</span><span class="vn">Templo</span></div></li>
+      <li><img src="assets/icon-candle.svg" alt="" aria-hidden="true"><span class="dot" aria-hidden="true"></span><div><time>5:30 PM</time><span class="ev">Ceremonia espiritual</span><span class="vn">Templo</span></div></li>
+      <li><img src="assets/icon-speech.svg" alt="" aria-hidden="true"><span class="dot" aria-hidden="true"></span><div><time>6:00 PM</time><span class="ev">Palabras de los novios</span><span class="vn">Templo</span></div></li>
+      <li><img src="assets/icon-cocktail.svg" alt="" aria-hidden="true"><span class="dot" aria-hidden="true"></span><div><time>6:15 PM</time><span class="ev">Brindis</span><span class="vn">Templo</span></div></li>
+      <li><img src="assets/icon-dinner.svg" alt="" aria-hidden="true"><span class="dot" aria-hidden="true"></span><div><time>6:30 PM</time><span class="ev">Cena</span><span class="vn">Templo</span></div></li>
+      <li><img src="assets/icon-speech.svg" alt="" aria-hidden="true"><span class="dot" aria-hidden="true"></span><div><time>8:00 PM</time><span class="ev">Palabras familiares y amigos</span><span class="vn">Templo</span></div></li>
+      <li><img src="assets/icon-sparkler.svg" alt="" aria-hidden="true"><span class="dot" aria-hidden="true"></span><div><time>8:30 PM</time><span class="ev">Cierre y despedida</span><span class="vn">Templo</span></div></li>
+    </ol>
+    <img class="itin-branch" src="assets/eucalyptus-timeline.svg" alt="" aria-hidden="true" data-od-id="timeline-branch">
+  </article>
+
+  <!-- 5 RSVP -->
+  <article class="card pad reveal" id="rsvp" data-od-id="rsvp-card" aria-label="RSVP">
+    <div class="sec-title" data-od-id="rsvp-title">
+      <span class="script">kindly</span><span class="serif">RSVP</span>
+      <img src="assets/heart.svg" alt="" aria-hidden="true">
+    </div>
+    <p class="rsvp-lead" data-od-id="rsvp-deadline">Kindly reply by<br>August 1, 2026</p>
+    <p class="rsvp-hello" id="rsvpHello" data-od-id="rsvp-greeting">Dear Guest,<br>We have saved you 2 seats.</p>
+    <form class="rsvp-form" id="rsvpForm" data-od-id="rsvp-form" novalidate>
+      <div class="pills" role="radiogroup" aria-label="Will you attend?" data-od-id="rsvp-pills">
+        <label class="pill"><input type="radio" name="choice" value="accepts" checked><span>I can assist</span></label>
+        <label class="pill"><input type="radio" name="choice" value="declines"><span>I cannot assist</span></label>
+      </div>
+      <label class="msg-label" for="rsvpMsg">Message</label>
+      <textarea class="msg" id="rsvpMsg" name="message" rows="3" placeholder="Message here"></textarea>
+      <p class="thanks" id="rsvpThanks" role="status" aria-live="polite"></p>
+      <button class="btn" type="submit" id="rsvpBtn" data-od-id="rsvp-submit">Send RSVP</button>
+      <p class="form-note" id="rsvpNote" role="status" aria-live="polite"></p>
+    </form>
+  </article>
+
+  <!-- 6 CLOSING -->
+  <article class="card closing reveal" id="closing" data-od-id="closing-card" aria-label="Closing">
+    <div class="closing-bg"><img src="photos/sunset.jpg" alt="Nicole and Rodrigo from behind holding hands at sunset by the sea" width="1000" height="1200"></div>
+    <div class="closing-text" data-od-id="closing-body">
+      <span class="script">we can't wait</span>
+      <span class="serif">To celebrate<br>with you!</span>
+      <img class="heart-w" src="assets/heart.svg" alt="" aria-hidden="true">
+      <div class="rule" aria-hidden="true"></div>
+      <span class="sign-script">with love,</span>
+      <div class="names">Nicole &amp; Rodrigo</div>
+    </div>
+  </article>
+
+</main>
+
+<script>
+/* ===== Charléa invitation logic: URL params + reveal + RSVP (GAS) ===== */
+(function(){
+  "use strict";
+  /* --- 1. Personalization (?n=Nombre&l=2) --- */
+  var params = new URLSearchParams(location.search);
+  var guestName = (params.get("n") || "").trim();
+  var seats = parseInt(params.get("l") || "2", 10);
+  if (isNaN(seats) || seats < 1) seats = 2; if (seats > 10) seats = 10;
+  var chip = document.getElementById("guestChip");
+  var hello = document.getElementById("rsvpHello");
+  var nameInput = document.getElementById("guestName");
+  function typedName(){ return (nameInput && nameInput.value.trim()) || guestName || "Guest"; }
+  function seatLine(){ return "We have saved you " + seats + (seats === 1 ? " seat." : " seats."); }
+  if (guestName) {
+    if (chip) { chip.textContent = "Dear " + guestName; chip.classList.add("show"); }
+    hello.innerHTML = "Dear " + escapeHtml(guestName) + ",<br>" + seatLine();
+    if (nameInput) nameInput.value = guestName;
+  } else {
+    if (chip) { chip.textContent = "Nicole & Rodrigo · 21.11.2026"; chip.classList.add("show"); }
+    hello.innerHTML = "Dear Guest,<br>" + seatLine();
+  }
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+
+  /* --- 2. Scroll-reveal --- */
+  var io = ("IntersectionObserver" in window) ? new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 }) : null;
+  document.querySelectorAll(".reveal").forEach(function(el){ if (io) io.observe(el); else el.classList.add("visible"); });
+
+  /* --- 3. Smooth scroll cue --- */
+  document.querySelectorAll("[data-scroll]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var t = document.querySelector(btn.getAttribute("data-scroll"));
+      if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  /* --- 4. RSVP thanks by choice --- */
+  var thanks = document.getElementById("rsvpThanks");
+  var msgInput = document.getElementById("rsvpMsg");
+  function currentChoice(){ var r = document.querySelector('input[name="choice"]:checked'); return r ? r.value : "accepts"; }
+  function refreshThanks(){
+    thanks.textContent = (currentChoice() === "declines") ? "¡Gracias por confirmar!" : "¡Gracias por ser parte de nuestra historia!";
+  }
+  document.querySelectorAll('input[name="choice"]').forEach(function(r){ r.addEventListener("change", refreshThanks); });
+  refreshThanks();
+
+  /* --- 5. RSVP sync via Google Apps Script (doGet/doPost), offline-safe ---
+     HOW TO CONNECT (2 min, free):
+     1. In Google Sheets create a sheet "RSVP" with header: timestamp,name,choice,party,message,guest,link
+     2. Extensions > Apps Script, paste:
+        function doPost(e){ var s=SpreadsheetApp.getActive().getSheetByName("RSVP");
+          s.appendRow([new Date(),e.parameter.name||"",e.parameter.choice||"",e.parameter.party||"",e.parameter.message||"",e.parameter.guest||"",e.parameter.link||""]);
+          return ContentService.createTextOutput("ok"); }
+        function doGet(e){ return doPost(e); }
+     3. Deploy > New deployment > Web app > Execute as Me, Access: Anyone with link. Copy /exec URL below. */
+  var GOOGLE_APPS_SCRIPT_URL = ""; /* <-- paste your /exec URL here */
+  var form = document.getElementById("rsvpForm");
+  var btn = document.getElementById("rsvpBtn");
+  var note = document.getElementById("rsvpNote");
+  function saveLocal(payload){
+    try {
+      var key = "rsvp_responses";
+      var arr = JSON.parse(localStorage.getItem(key) || "[]");
+      arr.push(payload);
+      localStorage.setItem(key, JSON.stringify(arr));
+    } catch (e) {}
+  }
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var choice = currentChoice();
+    var payload = {
+      name: typedName(),
+      choice: choice,
+      party: choice === "declines" ? 0 : seats,
+      message: msgInput.value.trim(),
+      guest: guestName || "",
+      link: location.href,
+      timestamp: new Date().toISOString()
+    };
+    btn.disabled = true; btn.textContent = "Sending…"; note.textContent = "";
+    saveLocal(payload);
+    refreshThanks();
+    if (!GOOGLE_APPS_SCRIPT_URL) {
+      note.textContent = "Saved on this device. The host will sync it from Admin.";
+      btn.disabled = false; btn.textContent = "Send RSVP";
+      return;
+    }
+    var body = new URLSearchParams(payload).toString();
+    fetch(GOOGLE_APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body })
+      .then(function(){ note.textContent = "Thank you! Your reply was received."; btn.textContent = "RSVP Sent"; })
+      .catch(function(){ note.textContent = "Saved on this device — we will confirm shortly."; btn.disabled = false; btn.textContent = "Send RSVP"; });
+  });
+
+  /* --- 6. Remember scroll (deck position) --- */
+  try {
+    var y = parseInt(sessionStorage.getItem("oe-scroll") || "0", 10);
+    if (y > 0) setTimeout(function(){ window.scrollTo(0, y); }, 60);
+    window.addEventListener("beforeunload", function(){ sessionStorage.setItem("oe-scroll", String(window.scrollY)); });
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
