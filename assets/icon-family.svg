@@ -1,6 +1,6 @@
 <!-- @license lucide-static v1.48.0 - ISC -->
 <svg
-  class="lucide lucide-mic"
+  class="lucide lucide-users-round"
   xmlns="http://www.w3.org/2000/svg"
   width="48"
   height="48"
@@ -11,7 +11,7 @@
   stroke-linecap="round"
   stroke-linejoin="round"
 >
-  <path d="M12 19v3" />
-  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-  <rect x="9" y="2" width="6" height="13" rx="3" />
+  <path d="M18 21a8 8 0 0 0-16 0" />
+  <circle cx="10" cy="8" r="5" />
+  <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
 </svg>
