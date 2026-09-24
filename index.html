@@ -364,8 +364,9 @@ a{color:inherit}
   "use strict";
   /* --- 1. Personalization (?n=Nombre&l=2) --- */
   var params = new URLSearchParams(location.search);
-  var guestName = (params.get("n") || "").trim();
-  var seats = parseInt(params.get("l") || "2", 10);
+  /* Acepta ?n= y ?l= clásicos, y ?invitado= / ?cantidad= del admin */
+  var guestName = (params.get("n") || params.get("invitado") || "").trim();
+  var seats = parseInt(params.get("l") || params.get("cantidad") || "2", 10);
   if (isNaN(seats) || seats < 1) seats = 2; if (seats > 10) seats = 10;
   var chip = document.getElementById("guestChip");
   var hello = document.getElementById("rsvpHello");
