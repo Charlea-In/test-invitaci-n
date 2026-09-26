@@ -48,21 +48,24 @@ a{color:inherit}
 .card{
   background:var(--surface-hex);border-radius:0;overflow:hidden;position:relative;
   box-shadow:none;border:0;border-bottom:1px solid var(--border-hex);
-  display:flex;flex-direction:column;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:safe center;min-height:100svh;
 }
 .card.pad{padding:56px 24px 60px}
 .card.pad>.sec-title,.card.pad>.timeline,.card.pad>.detail-list,
 .card.pad>.itin,.card.pad>.rsvp-lead,.card.pad>.rsvp-hello,
 .card.pad>.rsvp-form,.card.pad>.qr{width:100%;max-width:600px;margin-left:auto;margin-right:auto}
-.venue-wrap img.photo{height:34vh;min-height:240px}
+.venue-wrap img.photo{height:50vh;min-height:280px}
 /* reveal */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.hero-bg img{animation:none}.hero [data-rise]{animation:none;opacity:1;transform:none}}
 /* ---------- HERO ---------- */
 .hero{min-height:100svh;color:#FFF8EC;text-align:center;isolation:isolate}
 .hero-bg{position:absolute;inset:0;z-index:-2}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 55%;animation:kenburns 24s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
+.hero [data-rise]{opacity:0;animation:rise 1.1s cubic-bezier(.22,.61,.36,1) forwards;animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 .hero::after{
   content:"";position:absolute;inset:0;z-index:-1;
   background:linear-gradient(180deg,rgba(20,16,10,.42) 0%,rgba(20,16,10,.10) 30%,rgba(20,16,10,0) 45%,rgba(20,16,10,.18) 62%,rgba(20,16,10,.72) 100%);
@@ -82,6 +85,9 @@ a{color:inherit}
 .scroll-cue{background:none;border:0;cursor:pointer;margin:10px auto 0;display:flex;flex-direction:column;align-items:center;gap:6px;color:#FFF8EC;min-width:44px;min-height:44px;justify-content:center}
 .scroll-cue img{width:22px;height:22px;filter:brightness(0) invert(1);animation:bob 2.2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+/* ---------- photo breaks ---------- */
+.photobreak{position:relative;height:44svh;min-height:260px;overflow:hidden;border-bottom:1px solid var(--border-hex)}
+.photobreak img{width:100%;height:100%;object-fit:cover}
 /* ---------- section titles ---------- */
 .sec-title{text-align:center;margin:6px 0 18px}
 .sec-title .script{font-family:var(--script);font-size:38px;line-height:1;color:var(--ink-hex);display:block}
@@ -91,19 +97,23 @@ a{color:inherit}
 .sec-title .ruleline::before,.sec-title .ruleline::after{content:"";width:56px;height:1px;background:var(--border-hex)}
 /* ---------- story ---------- */
 .timeline{position:relative;margin:8px 0 0;padding-left:2px}
-.tl-item{display:grid;grid-template-columns:112px 1fr;gap:0;position:relative;padding:0 0 30px 0}
+.tl-item{display:grid;grid-template-columns:150px 1fr;gap:0;position:relative;padding:0 0 30px 0}
+.tl-item:last-child{padding-bottom:0}
 .tl-item>div:last-child{padding-left:30px;min-width:0}
-.tl-rail{position:absolute;left:127px;top:8px;bottom:26px;width:1px;background:var(--border-hex)}
-.tl-dot{position:absolute;left:124px;width:7px;height:7px;border-radius:50%;background:var(--sage-deep-hex);margin-top:6px}
+.tl-rail{position:absolute;left:165px;top:8px;bottom:26px;width:1px;background:var(--border-hex)}
+.tl-dot{position:absolute;left:162px;width:7px;height:7px;border-radius:50%;background:var(--sage-deep-hex);margin-top:6px}
 .polaroid{background:#fff;border:1px solid var(--border-hex);border-radius:6px;padding:6px 6px 10px;box-shadow:0 8px 20px rgba(140,110,47,.16);transform:rotate(-3deg)}
 .tl-item:nth-child(even) .polaroid{transform:rotate(2.5deg)}
-.polaroid img{width:100%;height:104px;object-fit:cover;border-radius:3px;aspect-ratio:1/1}
-.tl-year{font-weight:600;font-size:12px;letter-spacing:.18em}
+.polaroid img{width:100%;height:148px;object-fit:cover;border-radius:3px;aspect-ratio:1/1}
+.tl-year{font-weight:600;font-size:12px;letter-spacing:.18em;color:var(--sage-deep-hex)}
 .tl-sub{font-size:11px;letter-spacing:.18em;line-height:1.7;text-transform:uppercase;margin:8px 0 6px;font-weight:600}
 .tl-desc{font-size:12.5px;line-height:1.75;color:#5A4E38;margin:0;max-width:32ch;text-wrap:pretty}
+.line-finish{display:flex;align-items:center;justify-content:center;gap:10px;margin:22px auto 0}
+.line-finish::before,.line-finish::after{content:"";width:72px;height:1px;background:var(--border-hex)}
+.line-finish i{display:block;width:6px;height:6px;background:var(--sage-deep-hex);transform:rotate(45deg)}
 /* ---------- details ---------- */
 .venue-wrap{margin:-56px -24px 0;position:relative}
-.venue-wrap img.photo{width:100%;height:34vh;min-height:240px;object-fit:cover;object-position:center 40%}
+.venue-wrap img.photo{width:100%;height:50vh;min-height:280px;object-fit:cover;object-position:center 40%}
 .torn{height:22px;width:100%;display:block;margin-top:-1px;
   background:var(--surface-hex);
   clip-path:polygon(0 60%,4% 30%,9% 55%,14% 25%,19% 50%,25% 20%,31% 55%,37% 28%,43% 52%,49% 22%,55% 55%,61% 26%,67% 52%,73% 24%,79% 55%,85% 30%,90% 52%,95% 28%,100% 55%,100% 100%,0 100%);
@@ -125,7 +135,7 @@ a{color:inherit}
 .itin li{display:grid;grid-template-columns:44px 14px 1fr;gap:8px;align-items:center;padding:13px 0;position:relative}
 .itin img{width:34px;height:34px;justify-self:center}
 .itin .dot{width:7px;height:7px;border-radius:50%;background:var(--sage-deep-hex);justify-self:center;position:relative;z-index:1}
-.itin time{font-size:12px;letter-spacing:.14em;font-weight:600;display:block}
+.itin time{font-size:12px;letter-spacing:.14em;font-weight:600;display:block;color:var(--sage-deep-hex)}
 .itin span.ev{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-hex)}
 .itin span.vn{display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--sage-deep-hex);margin-top:3px}
 /* ---------- countdown band ---------- */
@@ -136,7 +146,7 @@ a{color:inherit}
 .cd-num{font-family:var(--display);font-weight:500;font-size:clamp(34px,7vw,52px);line-height:1;color:var(--sage-deep-hex);font-variant-numeric:tabular-nums}
 .cd-lab{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-hex);margin-top:8px}
 /* ---------- gallery ---------- */
-.gal{min-height:0;padding:48px 0 52px;justify-content:center}
+.gal{min-height:0;padding:48px 0 52px;justify-content:safe center}
 .gal .sec-title{padding:0 24px}
 .gal-view{position:relative;width:100%;max-width:900px;margin:20px auto 0;aspect-ratio:4/3;overflow:hidden;background:#EFE6D2;touch-action:pan-y}
 @media(min-width:700px){.gal-view{aspect-ratio:16/9}}
@@ -144,12 +154,13 @@ a{color:inherit}
 .gal-slide.on{opacity:1;z-index:1}
 .gal-slide img{width:100%;height:100%;object-fit:cover}
 .gal-nav{display:flex;align-items:center;justify-content:center;margin-top:18px;padding:0 24px;min-height:44px}
-.gal-dots{display:flex;gap:12px;align-items:center}
-.gal-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--sage-deep-hex);background:transparent;padding:0;cursor:pointer;transition:transform .3s ease,background-color .3s ease,opacity .3s ease}
-.gal-dot.d0{transform:scale(1.3);background:var(--sage-deep-hex);opacity:1}
-.gal-dot.d1{transform:scale(.85);opacity:.85}
-.gal-dot.d2{transform:scale(.6);opacity:.6}
-.gal-dot.d3{transform:scale(.4);opacity:.4}
+.gal-dots{display:flex;gap:4px;align-items:center}
+.gal-dot{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer}
+.gal-dot::after{content:"";width:10px;height:10px;border-radius:50%;border:1.5px solid var(--sage-deep-hex);background:transparent;transition:transform .3s ease,background-color .3s ease,opacity .3s ease}
+.gal-dot.d0::after{transform:scale(1.3);background:var(--sage-deep-hex);opacity:1}
+.gal-dot.d1::after{transform:scale(.85);opacity:.85}
+.gal-dot.d2::after{transform:scale(.6);opacity:.6}
+.gal-dot.d3::after{transform:scale(.4);opacity:.4}
 /* ---------- music button ---------- */
 .music-btn{position:fixed;right:16px;bottom:16px;z-index:60;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--sage-deep-hex);background:#FFFDF8;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(140,110,47,.25)}
 .music-btn:hover{background:#F1E3C2}
@@ -166,7 +177,7 @@ a{color:inherit}
 .pill span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:12px 6px;border:1.5px solid var(--sage-deep-hex);border-radius:999px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--sage-deep-hex);background:transparent;transition:background .2s ease,color .2s ease}
 .pill input:checked+span{background:var(--sage-deep-hex);color:#FFF9EE}
 .pill input:focus-visible+span{outline:3px solid var(--sage-deep-hex);outline-offset:2px}
-.msg-label{display:block;margin:20px 0 8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-hex);text-align:center}
+.msg-label{display:block;margin:16px 0 8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-hex);text-align:center}
 .msg{width:100%;border:1px solid var(--border-hex);border-radius:14px;background:#fff;font:inherit;font-size:13px;line-height:1.6;color:var(--ink-hex);padding:12px 14px;min-height:88px;resize:vertical}
 .msg::placeholder{color:var(--muted-hex)}
 .thanks{text-align:center;font-family:var(--display);font-style:italic;font-size:20px;line-height:1.5;color:var(--sage-deep-hex);min-height:30px;margin:16px 0 0}
@@ -195,9 +206,9 @@ a{color:inherit}
 .credit a{color:inherit;text-decoration:none}
 .credit a:hover{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:420px){
-  .tl-item{grid-template-columns:100px 1fr}
+  .tl-item{grid-template-columns:120px 1fr}
   .tl-item>div:last-child{padding-left:26px}
-  .tl-rail{left:113px}.tl-dot{left:110px}
+  .tl-rail{left:133px}.tl-dot{left:130px}
   .itin::before{left:51px}
 }
 </style>
@@ -210,16 +221,16 @@ a{color:inherit}
     <div class="hero-bg"><img src="photos/hero.jpg" alt="Nicole y Rodrigo en escaleras de jardín iluminadas de noche" width="3452" height="1942"></div>
     <div class="hero-inner">
       <div>
-        <div class="kicker" data-od-id="hero-kicker">Junto a sus familias</div>
-        <h2 class="hero-names" data-od-id="hero-names">
+        <div class="kicker" data-od-id="hero-kicker" data-rise style="--d:.1s">Junto a sus familias</div>
+        <h2 class="hero-names" data-od-id="hero-names" data-rise style="--d:.28s">
           <span class="big">NICOLE</span><span class="and">y</span><span class="big">RODRIGO</span>
         </h2>
         <div class="rule" aria-hidden="true"></div>
-        <p class="hero-invite" data-od-id="hero-invite">Te invitan a<br>celebrar su boda</p>
-        <div class="hero-date" data-od-id="hero-date"><span>NOV</span><span class="day">21</span><span>2026</span></div>
-        <div class="hero-time" data-od-id="hero-time">A las 5 de la tarde</div>
+        <p class="hero-invite" data-od-id="hero-invite" data-rise style="--d:.48s">Te invitan a<br>celebrar su boda</p>
+        <div class="hero-date" data-od-id="hero-date" data-rise style="--d:.62s"><span>NOV</span><span class="day">21</span><span>2026</span></div>
+        <div class="hero-time" data-od-id="hero-time" data-rise style="--d:.74s">A las 5 de la tarde</div>
       </div>
-      <div class="hero-foot" data-od-id="hero-location">
+      <div class="hero-foot" data-od-id="hero-location" data-rise style="--d:.95s">
         <div class="loc">Ministerio Cristiano Internacional<br>Río de Gloria, San Salvador</div>
         <button class="scroll-cue" data-scroll="#our-story" aria-label="Ir a nuestra historia">
           <img src="assets/heart.svg" alt="" aria-hidden="true">
@@ -264,6 +275,7 @@ a{color:inherit}
         <div><span class="tl-dot" aria-hidden="true"></span><div class="tl-year">2026</div><div class="tl-sub">Damos el sí</div><p class="tl-desc">¡No podemos esperar para celebrar contigo!</p></div>
       </div>
     </div>
+    <div class="line-finish" aria-hidden="true"><i></i></div>
   </article>
 
   <!-- 3 DETAILS -->
@@ -280,6 +292,7 @@ a{color:inherit}
       <li><img class="ic" src="assets/icon-church.svg" alt="" aria-hidden="true"><div><h3>Ceremonia y recepción</h3><p>Ministerio Cristiano Internacional<br>Río de Gloria, San Salvador</p><div class="map-btns" data-od-id="details-map-btns"><a class="map-btn" href="https://maps.app.goo.gl/39MjHheeKSmofu6p9" target="_blank" rel="noopener" data-od-id="btn-maps"><img src="assets/icon-maps.svg" alt="" aria-hidden="true">Maps</a><a class="map-btn" href="https://waze.com/ul?q=Ministerio%20Cristiano%20Internacional%20R%C3%ADo%20de%20Gloria%2C%20San%20Salvador&amp;navigate=yes" target="_blank" rel="noopener" data-od-id="btn-waze"><img src="assets/icon-waze.svg" alt="" aria-hidden="true">Waze</a></div></div></li>
       <li><img class="ic" src="assets/icon-shirt.svg" alt="" aria-hidden="true"><div><h3>Vestimenta</h3><p>Formal</p><p class="detail-note">Nadie puede ir con vestimenta informal, colores blanco, dorado ni champagne.</p></div></li>
     </ul>
+    <div class="line-finish" aria-hidden="true"><i></i></div>
   </article>
 
   <!-- 4 TIMELINE -->
@@ -298,7 +311,11 @@ a{color:inherit}
       <li><img src="assets/icon-family.svg" alt="" aria-hidden="true"><span class="dot" aria-hidden="true"></span><div><time>8:00 PM</time><span class="ev">Palabras familiares y amigos</span><span class="vn">Templo</span></div></li>
       <li><img src="assets/icon-sparkler.svg" alt="" aria-hidden="true"><span class="dot" aria-hidden="true"></span><div><time>8:30 PM</time><span class="ev">Cierre y despedida</span><span class="vn">Templo</span></div></li>
     </ol>
+    <div class="line-finish" aria-hidden="true"><i></i></div>
   </article>
+
+  <!-- BREAK ANILLO -->
+  <div class="photobreak reveal" data-od-id="break-anillo"><img src="photos/Carrusel-6.jpg" alt="Manos de Rodrigo mostrando el anillo de compromiso en su estuche" loading="lazy"></div>
 
   <!-- 5 GALLERY -->
   <article class="card gal reveal" id="gallery" data-od-id="gallery-card" aria-label="Galería de fotos">
