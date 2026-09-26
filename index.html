@@ -50,6 +50,8 @@ a{color:inherit}
   box-shadow:none;border:0;border-bottom:1px solid var(--border-hex);
   display:flex;flex-direction:column;justify-content:safe center;min-height:100svh;
 }
+.card.pad>*,.card.gal>*,.countband>*{position:relative;z-index:1}
+.card.pad::before,.card.gal::before,.countband::before{content:"";position:absolute;inset:0;background-image:url("assets/fondo-floral.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;opacity:.5;pointer-events:none}
 .card.pad{padding:56px 24px 60px}
 .card.pad>.sec-title,.card.pad>.timeline,.card.pad>.detail-list,
 .card.pad>.itin,.card.pad>.rsvp-lead,.card.pad>.rsvp-hello,
@@ -139,7 +141,7 @@ a{color:inherit}
 .itin span.ev{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-hex)}
 .itin span.vn{display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--sage-deep-hex);margin-top:3px}
 /* ---------- countdown band ---------- */
-.countband{background:var(--pearl-hex);border-bottom:1px solid var(--border-hex);text-align:center;padding:36px 20px}
+.countband{position:relative;background:var(--pearl-hex);border-bottom:1px solid var(--border-hex);text-align:center;padding:36px 20px;overflow:hidden}
 .cd-kicker{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted-hex)}
 .cd-grid{display:flex;justify-content:center;gap:clamp(16px,5vw,38px);margin-top:16px}
 .cd-cell{min-width:62px}
